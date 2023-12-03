@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 to Image Decoder</title>
+</head>
+<body>
+    <label for="base64Input">Enter Base64 String:</label>
+    <textarea id="base64Input" rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="decodeBase64()">Decode</button>
+    <br>
+    <img id="decodedImage" alt="Decoded Image" style="margin-top: 10px; display: none;">
+    
+    <script>
+        function decodeBase64() {
+            const base64Input = document.getElementById('base64Input').value;
+            const decodedImage = document.getElementById('decodedImage');
+
+            try {
+                // Create an image element
+                const img = new Image();
+                
+                // Set the source of the image to the Base64 string
+                img.src = base64Input;
+
+                // Show the image
+                decodedImage.src = img.src;
+                decodedImage.style.display = 'block';
+            } catch (error) {
+                console.error('Error decoding Base64:', error);
+                alert('Error decoding Base64 string. Please check the input and try again.');
+            }
+        }
+    </script>
+</body>
+</html>
